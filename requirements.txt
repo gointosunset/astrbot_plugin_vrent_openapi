@@ -1,0 +1,4 @@
+# AstrBot VRent OpenAPI Plugin Dependencies
+# Python >= 3.8 required
+
+aiohttp>=3.9.0
