@@ -4,6 +4,7 @@ from astrbot.api import logger
 from astrbot.api import AstrBotConfig
 import aiohttp
 import re
+from urllib.parse import urljoin
 
 
 @register("openapi", "gointosunset", "一个简单的 Hello World 插件", "1.0.0")
@@ -54,14 +55,27 @@ class MyPlugin(Star):
         # 构建请求数据
         payload = {"tno": tno, "amount": amount, "reason": reason}
 
-        url = "https://cloud.moshisoft.cn/j2ee/merctx/openapi/robotic/dd"
+        # 检查配置
+        base_url = getattr(self.config, "Base_Url", None)
+        if not base_url:
+            yield event.plain_result("/tk 插件尚未配置，请先完成配置")
+            return
+
+        path = "/j2ee/merctx/openapi/robotic/dd"
+        full_url = urljoin(base_url, path)
         headers = {"Content-Type": "application/json"}
-        logger.info(f"发送请求到 {url}, payload={payload}")
+
+        # 可选添加 Token
+        token = getattr(self.config, "Token", None)
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+
+        logger.info(f"发送请求到 {full_url}, payload={payload}")
 
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.post(
-                    url,
+                    full_url,
                     json=payload,
                     headers=headers,
                     timeout=aiohttp.ClientTimeout(total=10),

@@ -1,6 +1,10 @@
 {
-  "token": {
-    "description": "Auth Token",
+  "Base_Url": {
+    "description": "Base Url",
+    "type": "string"
+  },
+  "Token": {
+    "description": "Authorization: Bearer",
     "type": "string"
   }
 }
