@@ -1,0 +1,6 @@
+{
+  "token": {
+    "description": "Auth Token",
+    "type": "string"
+  }
+}

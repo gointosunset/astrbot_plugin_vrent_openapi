@@ -1,4 +1,4 @@
-# astrbot-plugin-helloworld
+# astrbot-plugin-vrent-openapi
 
 AstrBot 插件模板 / A template plugin for AstrBot plugin feature
 
