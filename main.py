@@ -12,14 +12,13 @@ class MyPlugin(Star):
     def __init__(self, context: Context, config: AstrBotConfig):
         super().__init__(context)
         self.config = config
-        logger.info(self.config)
+        # logger.info(self.config)
 
     async def initialize(self):
         """可选择实现异步的插件初始化方法，当实例化该插件类之后会自动调用该方法。"""
 
     # 注册指令的装饰器。指令名为 helloworld。注册成功后，发送 `/helloworld` 就会触发这个指令，并回复 `你好, {user_name}!`
     @filter.command("dd")
-    @filter.event_message_type(filter.EventMessageType.GROUP_MESSAGE)
     async def dd(self, event: AstrMessageEvent):
         """处理 /dd 指令，调用退款API"""
         user_name = event.get_sender_name()
@@ -33,7 +32,6 @@ class MyPlugin(Star):
         )  # 发送一条纯文本消息
 
     @filter.command("tk")
-    @filter.event_message_type(filter.EventMessageType.GROUP_MESSAGE)
     async def tk(self, event: AstrMessageEvent):
         """处理 /tk 指令，调用退款API"""
         message_str = event.message_str  # 用户发的纯文本消息字符串
