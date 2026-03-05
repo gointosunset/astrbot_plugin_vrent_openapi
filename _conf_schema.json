@@ -3,8 +3,8 @@
     "description": "Base Url",
     "type": "string"
   },
-  "Token": {
-    "description": "Authorization: Bearer",
+  "X-API-Key": {
+    "description": "X-API-Key",
     "type": "string"
   }
 }
