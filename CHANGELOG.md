@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2026-03-07
+
+### Changed
+- 完善 `/dd` 指令实现，支持完整的退款API调用
+- 为 `/dd` 和 `/tk` 指令添加群组消息类型过滤
+
+### Fixed
+- 修正文档中错误的 API 端点 URL 说明
+
 ## [1.0.2] - 2026-03-06
 
 ### Added
@@ -23,7 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Implementation Details
 - `/tk` 指令支持格式：`/tk 单号 金额 原因`（示例：`/tk 0077 20元 车辆故障`）
 - 解析用户输入，提取订单号、金额和原因
-- 调用 API 端点 `https://cloud.moshisoft.cn/j2ee/merctx/openapi/robotic/dd`
+- 调用 API 端点 `Base_Url` + `/j2ee/merctx/openapi/robotic/dd`
 - 返回 API 响应中的 `message` 字段给用户
 - 包含完整的错误处理（格式校验、网络错误、API错误等）
 
